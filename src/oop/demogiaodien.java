@@ -8,6 +8,7 @@ package oop;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -43,6 +44,8 @@ public class demogiaodien extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jCalendar1 = new com.toedter.calendar.JCalendar();
@@ -81,7 +84,7 @@ public class demogiaodien extends javax.swing.JFrame {
 
         ndcodinh.setBackground(new java.awt.Color(153, 153, 153));
 
-        jLabel3.setText("TAG:");
+        jLabel3.setText("TYPE");
 
         jButton1.setBackground(new java.awt.Color(102, 102, 0));
         jButton1.setForeground(new java.awt.Color(204, 204, 255));
@@ -94,7 +97,13 @@ public class demogiaodien extends javax.swing.JFrame {
 
         jLabel1.setText("CHOOSEN TAGS:");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setMaximumRowCount(14);
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn nội dung:", "Nhà đầu tư nước ngoài", "Cổ phiếu nổi bật", "Cổ phiếu ngân hàng chốt phiên", "Thanh khoản", "Giao dịch thỏa thuận/chuyển nhượng thỏa thuận", "Đặc tính Nổi bật", "Khối ngoại", "Cổ phiếu chứng khoán", "Cổ phiếu ngân hàng", "Cổ phiếu Penny và midcap", "Tổng hợp theo thời gian", "Kỷ lục", "Bán ra/mua lại" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Choose");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +115,15 @@ public class demogiaodien extends javax.swing.JFrame {
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
+
+        jLabel2.setText("TAG");
+
+        jComboBox3.setMaximumRowCount(15);
+        jComboBox3.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jComboBox3ComponentAdded(evt);
+            }
+        });
 
         javax.swing.GroupLayout ndcodinhLayout = new javax.swing.GroupLayout(ndcodinh);
         ndcodinh.setLayout(ndcodinhLayout);
@@ -119,11 +137,15 @@ public class demogiaodien extends javax.swing.JFrame {
                             .addGroup(ndcodinhLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton5))
                             .addComponent(jLabel1))
-                        .addContainerGap(649, Short.MAX_VALUE))
+                        .addContainerGap(462, Short.MAX_VALUE))
                     .addGroup(ndcodinhLayout.createSequentialGroup()
                         .addComponent(jScrollPane2)
                         .addGap(18, 18, 18)
@@ -136,13 +158,15 @@ public class demogiaodien extends javax.swing.JFrame {
                 .addGroup(ndcodinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(jButton5)
+                    .addComponent(jLabel2)
+                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ndcodinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ndcodinhLayout.createSequentialGroup()
-                        .addGap(0, 53, Short.MAX_VALUE)
+                        .addGap(0, 61, Short.MAX_VALUE)
                         .addComponent(jButton1))
                     .addGroup(ndcodinhLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
@@ -167,7 +191,7 @@ public class demogiaodien extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 353, Short.MAX_VALUE))
+                .addGap(0, 345, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("ngày", jPanel4);
@@ -298,7 +322,7 @@ public class demogiaodien extends javax.swing.JFrame {
                             .addComponent(addbutton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane4))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 523, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ndcodinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
@@ -335,9 +359,101 @@ public class demogiaodien extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String tmp = (String) jComboBox2.getSelectedItem();
-        jTextArea2.setText(jTextArea2.getText()+','+tmp);
+        String tmp = (String) jComboBox3.getSelectedItem();
+        jTextArea2.setText(jTextArea2.getText()+' '+';'+' '+tmp);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jComboBox3ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jComboBox3ComponentAdded
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jComboBox3ComponentAdded
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+        switch(jComboBox2.getSelectedIndex()){
+            case 1:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag1.length;i++){
+                   jComboBox3.addItem(tag1[i]); 
+                }
+                break;
+            case 2:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag2.length;i++){
+                   jComboBox3.addItem(tag2[i]); 
+                }
+                break;
+            case 3:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag3.length;i++){
+                   jComboBox3.addItem(tag3[i]); 
+                }
+                break;
+            case 4:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag4.length;i++){
+                   jComboBox3.addItem(tag4[i]); 
+                }
+                break;
+            case 5:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag5.length;i++){
+                   jComboBox3.addItem(tag5[i]); 
+                }
+                break;
+            case 6:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag6.length;i++){
+                   jComboBox3.addItem(tag6[i]); 
+                }
+                break;
+            case 7:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag7.length;i++){
+                   jComboBox3.addItem(tag7[i]); 
+                }
+                break;
+            case 8:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag8.length;i++){
+                   jComboBox3.addItem(tag8[i]); 
+                }
+                break;
+            case 9:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag9.length;i++){
+                   jComboBox3.addItem(tag9[i]); 
+                }
+                break;
+            case 10:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag10.length;i++){
+                   jComboBox3.addItem(tag10[i]); 
+                }
+                break;
+            case 11:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag11.length;i++){
+                   jComboBox3.addItem(tag11[i]); 
+                }
+                break;
+            case 12:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag12.length;i++){
+                   jComboBox3.addItem(tag12[i]); 
+                }
+                break;
+            case 13:
+                jComboBox3.removeAllItems();
+                for(int i = 0; i < tag13.length;i++){
+                   jComboBox3.addItem(tag13[i]); 
+                }
+                break;
+            default:
+                jComboBox3.removeAllItems();
+                break;
+        }
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,6 +490,24 @@ public class demogiaodien extends javax.swing.JFrame {
         });
     }
 
+    private String[] tag1 = {"Nhà đầu tư nước ngoài"};
+    private String[] tag2 = {"Giao dịch lớn","Tỷ lệ % giao dịch cổ phiếu lớn","Tỷ lệ % giao dịch thấp – cổ phiếu kém",
+                             "Nhận định chung","Cổ phiếu hot bán ra","Cổ phiếu hot gom vào/mua vào",
+                             "Cổ phiếu hot","Giao dịch vượt ngưỡng","Cổ phiếu mức khá",
+                             "Cổ phiếu tăng nhẹ","Cổ phiếu giảm giá","So sánh cổ phiếu","So sánh theo thời gian",
+                             "Phân tích 1 cổ phiếu","So sánh 2 sàn",};
+    private String[] tag3 = {"Cổ phiếu ngân hàng, chốt phiên"};
+    private String[] tag4 = {"Thanh khoản","Tổng giá trị giao dịch","Tăng trần",
+                            "Dư bán","Dư mua","Đứng giá","Tiêu cực","Chuyển nhượng/khớp lệnh"};
+    private String[] tag5 = {"Giao dịch thỏa thuận/chuyển nhượng thỏa thuận"};
+    private String[] tag6 = {"Đặc tính Nổi bật","Khác biệt với xu thế chung"};
+    private String[] tag7 = {"Khối ngoại"};
+    private String[] tag8 = {"Cổ phiếu chứng khoán"};
+    private String[] tag9 = {"Cổ phiếu ngân hàng"};
+    private String[] tag10 = {"Cổ phiếu Penny, midcap"};
+    private String[] tag11 = {"Long term","Short term"};
+    private String[] tag12 = {"Kỷ lục"};
+    private String[] tag13 = {"Bán ra/mua lại"};
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addbutton;
     private javax.swing.JButton jButton1;
@@ -385,7 +519,9 @@ public class demogiaodien extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
