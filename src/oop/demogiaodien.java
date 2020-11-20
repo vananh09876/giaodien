@@ -6,11 +6,16 @@
 package oop;
 
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JComboBox;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
+import java.util.Date;
+
 
 /**
  *
@@ -23,6 +28,9 @@ public class demogiaodien extends javax.swing.JFrame {
      */
     public demogiaodien() {
         initComponents();
+        jButton1.setText(toDay());
+        jButton5.setText(toYesterday());
+        jButton6.setText(toTwodaybefore());
     }
 
     /**
@@ -38,20 +46,12 @@ public class demogiaodien extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         ndtimkiem = new javax.swing.JLabel();
         addbutton = new javax.swing.JButton();
-        ndcodinh = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton5 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton6 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jButton1 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -85,126 +85,53 @@ public class demogiaodien extends javax.swing.JFrame {
             }
         });
 
-        ndcodinh.setBackground(new java.awt.Color(153, 153, 153));
-
-        jLabel3.setText("TYPE");
-
-        jButton1.setBackground(new java.awt.Color(102, 102, 0));
-        jButton1.setForeground(new java.awt.Color(204, 204, 255));
-        jButton1.setText("exit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("CHOOSEN TAGS:");
-
-        jComboBox2.setMaximumRowCount(14);
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn nội dung:", "Nhà đầu tư nước ngoài", "Cổ phiếu nổi bật", "Cổ phiếu ngân hàng chốt phiên", "Thanh khoản", "Giao dịch thỏa thuận/chuyển nhượng thỏa thuận", "Đặc tính Nổi bật", "Khối ngoại", "Cổ phiếu chứng khoán", "Cổ phiếu ngân hàng", "Cổ phiếu Penny và midcap", "Tổng hợp theo thời gian", "Kỷ lục", "Bán ra/mua lại" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("Choose");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
-
-        jLabel2.setText("TAG");
-
-        jComboBox3.setMaximumRowCount(15);
-        jComboBox3.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                jComboBox3ComponentAdded(evt);
-            }
-        });
-
-        jButton6.setText("Clear");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout ndcodinhLayout = new javax.swing.GroupLayout(ndcodinh);
-        ndcodinh.setLayout(ndcodinhLayout);
-        ndcodinhLayout.setHorizontalGroup(
-            ndcodinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ndcodinhLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ndcodinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ndcodinhLayout.createSequentialGroup()
-                        .addGroup(ndcodinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(ndcodinhLayout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton6))
-                            .addComponent(jLabel1))
-                        .addContainerGap(399, Short.MAX_VALUE))
-                    .addGroup(ndcodinhLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
-        );
-        ndcodinhLayout.setVerticalGroup(
-            ndcodinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ndcodinhLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ndcodinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ndcodinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(ndcodinhLayout.createSequentialGroup()
-                        .addGap(0, 61, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addGroup(ndcodinhLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())))
-        );
-
         jTabbedPane1.setBackground(new java.awt.Color(102, 204, 255));
         jTabbedPane1.setForeground(new java.awt.Color(153, 153, 255));
         jTabbedPane1.setOpaque(true);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
+        jButton1.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+                jButton1InputMethodTextChanged(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Choice day:");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 349, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(57, 57, 57)
+                .addComponent(jButton1)
+                .addGap(43, 43, 43)
+                .addComponent(jButton5)
+                .addGap(41, 41, 41)
+                .addComponent(jButton6)
+                .addContainerGap(288, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("ngày", jPanel4);
@@ -266,6 +193,7 @@ public class demogiaodien extends javax.swing.JFrame {
         jTable1.getAccessibleContext().setAccessibleName("");
 
         jButton2.setText("Search");
+        jButton2.setName("Search"); // NOI18N
 
         jButton4.setText("Delete");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -321,9 +249,8 @@ public class demogiaodien extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 10, Short.MAX_VALUE)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))))
-            .addComponent(ndcodinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,9 +262,7 @@ public class demogiaodien extends javax.swing.JFrame {
                             .addComponent(addbutton))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane4))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ndcodinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTabbedPane1))
                 .addContainerGap())
         );
 
@@ -345,7 +270,23 @@ public class demogiaodien extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    private String toDay(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date =new Date();
+        return dateFormat.format(date).toString();
+        
+    }
+    private String toYesterday(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date(System.currentTimeMillis()-24*60*60*1000);
+        return dateFormat.format(date).toString();
+    }
+    private String toTwodaybefore(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        Date date = new Date(System.currentTimeMillis()-2*24*60*60*1000);
+        return dateFormat.format(date).toString();
+    }
+    
     private void addbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbuttonActionPerformed
         // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
@@ -360,124 +301,18 @@ public class demogiaodien extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addbuttonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         jTextArea1.setText(null);
-        jTextArea2.setText(null);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String tmp = (String) jComboBox3.getSelectedItem();
-        listTag.add(tmp);
-        jTextArea2.setText(jTextArea2.getText()+' '+';'+' '+tmp);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jComboBox3ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jComboBox3ComponentAdded
-        // TODO add your handling code here:
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-    }//GEN-LAST:event_jComboBox3ComponentAdded
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-        switch(jComboBox2.getSelectedIndex()){
-            case 1:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag1.length;i++){
-                   jComboBox3.addItem(tag1[i]); 
-                }
-                break;
-            case 2:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag2.length;i++){
-                   jComboBox3.addItem(tag2[i]); 
-                }
-                break;
-            case 3:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag3.length;i++){
-                   jComboBox3.addItem(tag3[i]); 
-                }
-                break;
-            case 4:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag4.length;i++){
-                   jComboBox3.addItem(tag4[i]); 
-                }
-                break;
-            case 5:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag5.length;i++){
-                   jComboBox3.addItem(tag5[i]); 
-                }
-                break;
-            case 6:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag6.length;i++){
-                   jComboBox3.addItem(tag6[i]); 
-                }
-                break;
-            case 7:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag7.length;i++){
-                   jComboBox3.addItem(tag7[i]); 
-                }
-                break;
-            case 8:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag8.length;i++){
-                   jComboBox3.addItem(tag8[i]); 
-                }
-                break;
-            case 9:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag9.length;i++){
-                   jComboBox3.addItem(tag9[i]); 
-                }
-                break;
-            case 10:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag10.length;i++){
-                   jComboBox3.addItem(tag10[i]); 
-                }
-                break;
-            case 11:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag11.length;i++){
-                   jComboBox3.addItem(tag11[i]); 
-                }
-                break;
-            case 12:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag12.length;i++){
-                   jComboBox3.addItem(tag12[i]); 
-                }
-                break;
-            case 13:
-                jComboBox3.removeAllItems();
-                for(int i = 0; i < tag13.length;i++){
-                   jComboBox3.addItem(tag13[i]); 
-                }
-                break;
-            default:
-                jComboBox3.removeAllItems();
-                break;
-        }
-    }//GEN-LAST:event_jComboBox2ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        listTag.remove(listTag.size()-1);
-        jTextArea2.removeAll();
-        jTextArea2.setText(null);
-        for( String s : listTag){
-            jTextArea2.setText(jTextArea2.getText()+' '+';'+' '+s);
-        }
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void jButton1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jButton1InputMethodTextChanged
+        
+    }//GEN-LAST:event_jButton1InputMethodTextChanged
 
     /**
      * @param args the command line arguments
@@ -509,30 +344,13 @@ public class demogiaodien extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new demogiaodien().setVisible(true);
             }
         });
     }
 
-    private String[] tag1 = {"Nhà đầu tư nước ngoài"};
-    private String[] tag2 = {"Giao dịch lớn","Tỷ lệ % giao dịch cổ phiếu lớn","Tỷ lệ % giao dịch thấp – cổ phiếu kém",
-                             "Nhận định chung","Cổ phiếu hot bán ra","Cổ phiếu hot gom vào/mua vào",
-                             "Cổ phiếu hot","Giao dịch vượt ngưỡng","Cổ phiếu mức khá",
-                             "Cổ phiếu tăng nhẹ","Cổ phiếu giảm giá","So sánh cổ phiếu","So sánh theo thời gian",
-                             "Phân tích 1 cổ phiếu","So sánh 2 sàn",};
-    private String[] tag3 = {"Cổ phiếu ngân hàng, chốt phiên"};
-    private String[] tag4 = {"Thanh khoản","Tổng giá trị giao dịch","Tăng trần",
-                            "Dư bán","Dư mua","Đứng giá","Tiêu cực","Chuyển nhượng/khớp lệnh"};
-    private String[] tag5 = {"Giao dịch thỏa thuận/chuyển nhượng thỏa thuận"};
-    private String[] tag6 = {"Đặc tính Nổi bật","Khác biệt với xu thế chung"};
-    private String[] tag7 = {"Khối ngoại"};
-    private String[] tag8 = {"Cổ phiếu chứng khoán"};
-    private String[] tag9 = {"Cổ phiếu ngân hàng"};
-    private String[] tag10 = {"Cổ phiếu Penny, midcap"};
-    private String[] tag11 = {"Long term","Short term"};
-    private String[] tag12 = {"Kỷ lục"};
-    private String[] tag13 = {"Bán ra/mua lại"};
-    private List<String> listTag = new ArrayList<String>();
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addbutton;
     private javax.swing.JButton jButton1;
@@ -541,24 +359,16 @@ public class demogiaodien extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JPanel ndcodinh;
     private javax.swing.JLabel ndtimkiem;
     // End of variables declaration//GEN-END:variables
 }
