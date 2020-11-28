@@ -9,19 +9,10 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.JFileChooser;
-import java.util.ArrayList;
-import java.util.List;
-import java.time.LocalDate;
+
 import java.util.Date;
 
-import javax.swing.RowFilter;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.JComboBox;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -45,7 +36,7 @@ public class demogiaodien extends javax.swing.JFrame {
         jButton1.setText(toTwodaybefore());
         jButton2.setText(toYesterday());
         jButton4.setText(toDay());
-        sortTable();
+        
     }
 
     /**
@@ -207,7 +198,6 @@ public class demogiaodien extends javax.swing.JFrame {
 
         });
 
-        jTextField1.setText("Search");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -306,18 +296,18 @@ public class demogiaodien extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     private String toDay(){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date =new Date();
+        Date date =new Date(System.currentTimeMillis()-24*60*60*1000);
         return dateFormat.format(date).toString();
         
     }
     private String toYesterday(){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date(System.currentTimeMillis()-24*60*60*1000);
+        Date date = new Date(System.currentTimeMillis()-2*24*60*60*1000);
         return dateFormat.format(date).toString();
     }
     private String toTwodaybefore(){
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = new Date(System.currentTimeMillis()-2*24*60*60*1000);
+        Date date = new Date(System.currentTimeMillis()-3*24*60*60*1000);
         return dateFormat.format(date).toString();
     }
     
@@ -473,37 +463,7 @@ public class demogiaodien extends javax.swing.JFrame {
             updateInfo(selectedData);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
-    private void sortTable(){
-        TableRowSorter<TableModel> sorter = new TableRowSorter<>(jTable1.getModel());
-        jTable1.setRowSorter(sorter);
-        jTextField1.getDocument().addDocumentListener(new DocumentListener() {
-            @Override
-            public void insertUpdate(DocumentEvent e) {
-                String text = jTextField1.getText();
-                if(text.trim().length()==0){
-                    sorter.setRowFilter(null);
-                }else{
-                    sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                }
-            }
-
-            @Override
-            public void removeUpdate(DocumentEvent e) {
-                String text = jTextField1.getText();
-                if(text.trim().length()==0){
-                    sorter.setRowFilter(null);
-                }else{
-                    sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
-                }
-            }
-
-            @Override
-            public void changedUpdate(DocumentEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
-        
-    }
+    
     
     private void setMa_CP(String query){
         ResultSet rs = this.db.executeQuerySelect(query);
